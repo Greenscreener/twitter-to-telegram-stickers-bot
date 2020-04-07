@@ -98,7 +98,7 @@ function createStickerPack(message) {
 		});
 		let createFailed = false;
 		const stickerPackName = `${message.from.username}s_${message.text.split(" ")[1].replace("@","")}_by_TwitterStickerBot`;
-		return fetch(`https://api.twitter.com/1.1/search/tweets.json?result_type=recent&q=from%3A${message.text.split(" ")[1].replace("@","")}%20filter%3Atwimg&count=100`, {
+		return fetch(`https://api.twitter.com/1.1/search/tweets.json?result_type=recent&q=from%3A${encodeURIComponent(message.text.split(" ")[1].replace("@",""))}%20filter%3Atwimg&count=100`, {
 			method: "GET",
 			headers: {"Authorization": "Bearer " + secrets.twitterAccessToken}
 		}).then(response => response.json()).then(json => {
