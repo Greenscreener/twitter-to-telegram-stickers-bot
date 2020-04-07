@@ -11,7 +11,7 @@ const secrets = require("./secrets.json");
 const verbose = false;
 
 exports.telegramTwitterStickerBot = functions.https.onRequest((request, response) => {
-	if (request.path === '/HbXQSJaq0Ewooc13OlvBhrBMHQc89_9GqC8q16F56Imq48hOvLNMZeoaBSCl0DkvQ1_0snYTfYdS') {
+	if (request.path === secrets.path) {
 		console.log(request.body);
 		const pubsub = new PubSub();
 		const topic = pubsub.topic("triggerTelegramBot");
